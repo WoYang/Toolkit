@@ -1,0 +1,54 @@
+九月 05, 2016 10:12:00 上午 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: F:\Toolkit\tomcat\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;F:\adt-bundle-windows-x86_64-20130729\android-sdk-windows\platform-tools;F:\Program Files\Java\jdk1.7.0_25\bin;F:\Program Files\Java\jdk1.7.0_25\jre\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;F:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;F:\Program Files\Git\bin;F:\Program Files\Git\mingw64\libexec\git-core;F:\Program Files\gradle\gradle-2.6-all\gradle-2.6/bin;F:\Program Files\TortoiseSVN\bin;C:\Program Files\EsafeNet\Cobra DocGuard Client;.
+九月 05, 2016 10:12:02 上午 org.apache.coyote.http11.Http11Protocol init
+信息: Initializing Coyote HTTP/1.1 on http-8088
+九月 05, 2016 10:12:02 上午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 2579 ms
+九月 05, 2016 10:12:02 上午 org.apache.catalina.core.StandardService start
+信息: Starting service Catalina
+九月 05, 2016 10:12:02 上午 org.apache.catalina.core.StandardEngine start
+信息: Starting Servlet Engine: Apache Tomcat/6.0.29
+九月 05, 2016 10:12:02 上午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory angular-gridster-master
+九月 05, 2016 10:12:02 上午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory angular-gridster-master1
+九月 05, 2016 10:12:03 上午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory skyworth
+九月 05, 2016 10:12:03 上午 org.apache.coyote.http11.Http11Protocol start
+信息: Starting Coyote HTTP/1.1 on http-8088
+九月 05, 2016 10:12:03 上午 org.apache.jk.common.ChannelSocket init
+信息: JK: ajp13 listening on /0.0.0.0:8009
+九月 05, 2016 10:12:03 上午 org.apache.jk.server.JkMain start
+信息: Jk running ID=0 time=0/130  config=null
+九月 05, 2016 10:12:03 上午 org.apache.catalina.startup.Catalina start
+信息: Server startup in 1267 ms
+九月 05, 2016 12:25:20 下午 org.apache.coyote.http11.Http11Protocol pause
+信息: Pausing Coyote HTTP/1.1 on http-8088
+九月 05, 2016 12:25:21 下午 org.apache.catalina.core.StandardService stop
+信息: Stopping service Catalina
+九月 05, 2016 12:25:21 下午 org.apache.coyote.http11.Http11Protocol destroy
+信息: Stopping Coyote HTTP/1.1 on http-8088
+九月 05, 2016 12:25:26 下午 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: F:\Toolkit\tomcat\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;F:\adt-bundle-windows-x86_64-20130729\android-sdk-windows\platform-tools;F:\Program Files\Java\jdk1.7.0_25\bin;F:\Program Files\Java\jdk1.7.0_25\jre\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;F:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;F:\Program Files\Git\bin;F:\Program Files\Git\mingw64\libexec\git-core;F:\Program Files\gradle\gradle-2.6-all\gradle-2.6/bin;F:\Program Files\TortoiseSVN\bin;C:\Program Files\EsafeNet\Cobra DocGuard Client;.
+九月 05, 2016 12:25:26 下午 org.apache.coyote.http11.Http11Protocol init
+信息: Initializing Coyote HTTP/1.1 on http-8088
+九月 05, 2016 12:25:26 下午 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 315 ms
+九月 05, 2016 12:25:26 下午 org.apache.catalina.core.StandardService start
+信息: Starting service Catalina
+九月 05, 2016 12:25:26 下午 org.apache.catalina.core.StandardEngine start
+信息: Starting Servlet Engine: Apache Tomcat/6.0.29
+九月 05, 2016 12:25:26 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory angular-gridster-master
+九月 05, 2016 12:25:26 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory angular-gridster-master1
+九月 05, 2016 12:25:26 下午 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory skyworth
+九月 05, 2016 12:25:26 下午 org.apache.coyote.http11.Http11Protocol start
+信息: Starting Coyote HTTP/1.1 on http-8088
+九月 05, 2016 12:25:26 下午 org.apache.jk.common.ChannelSocket init
+信息: JK: ajp13 listening on /0.0.0.0:8009
+九月 05, 2016 12:25:26 下午 org.apache.jk.server.JkMain start
+信息: Jk running ID=0 time=0/25  config=null
+九月 05, 2016 12:25:26 下午 org.apache.catalina.startup.Catalina start
+信息: Server startup in 274 ms

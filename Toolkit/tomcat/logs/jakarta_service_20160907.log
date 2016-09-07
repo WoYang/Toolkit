@@ -1,0 +1,5 @@
+[2016-09-07 15:14:26] [info] Procrun (2.0.4.0) started
+[2016-09-07 15:14:26] [info] Service Tomcat6CAS name Apache Tomcat Tomcat6CAS
+[2016-09-07 15:14:26] [420  service.c] [error] 指定的服务已存在。
+[2016-09-07 15:14:26] [614  prunsrv.c] [error] Failed installing Tomcat6CAS service
+[2016-09-07 15:14:26] [info] Procrun finished.

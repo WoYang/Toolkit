@@ -1,0 +1,10 @@
+九月 07, 2016 3:47:23 下午 org.apache.catalina.startup.HostConfig checkResources
+信息: Undeploying context [/angular-gridster-master]
+九月 07, 2016 3:47:23 下午 org.apache.catalina.startup.HostConfig checkResources
+信息: Undeploying context [/angular-gridster-master1]
+九月 07, 2016 3:54:24 下午 org.apache.coyote.http11.Http11Protocol pause
+信息: Pausing Coyote HTTP/1.1 on http-8088
+九月 07, 2016 3:54:25 下午 org.apache.catalina.core.StandardService stop
+信息: Stopping service Catalina
+九月 07, 2016 3:54:25 下午 org.apache.coyote.http11.Http11Protocol destroy
+信息: Stopping Coyote HTTP/1.1 on http-8088

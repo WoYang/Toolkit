@@ -1,0 +1,58 @@
+2011-11-15 14:45:51 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Java\jdk1.6.0_13\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;C:\Java\jdk1.6.0_13\bin;C:\Program Files\Common Files\Roxio Shared\9.0\DLLShared\;C:\Program Files\IDM Computer Solutions\UltraEdit\;C:\Program Files\SSH Communications Security\SSH Secure Shell
+2011-11-15 14:45:52 org.apache.coyote.http11.Http11Protocol init
+严重: Error initializing endpoint
+java.net.SocketException: Unrecognized Windows Sockets error: 0: JVM_Bind
+	at java.net.PlainSocketImpl.socketBind(Native Method)
+	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)
+	at java.net.ServerSocket.bind(ServerSocket.java:319)
+	at java.net.ServerSocket.<init>(ServerSocket.java:185)
+	at java.net.ServerSocket.<init>(ServerSocket.java:141)
+	at org.apache.tomcat.util.net.DefaultServerSocketFactory.createSocket(DefaultServerSocketFactory.java:50)
+	at org.apache.tomcat.util.net.JIoEndpoint.init(JIoEndpoint.java:538)
+	at org.apache.coyote.http11.Http11Protocol.init(Http11Protocol.java:176)
+	at org.apache.catalina.connector.Connector.initialize(Connector.java:1014)
+	at org.apache.catalina.core.StandardService.initialize(StandardService.java:680)
+	at org.apache.catalina.core.StandardServer.initialize(StandardServer.java:795)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:524)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:548)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:260)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:412)
+2011-11-15 14:45:52 org.apache.catalina.startup.Catalina load
+严重: Catalina.start
+LifecycleException:  Protocol handler initialization failed: java.net.SocketException: Unrecognized Windows Sockets error: 0: JVM_Bind
+	at org.apache.catalina.connector.Connector.initialize(Connector.java:1016)
+	at org.apache.catalina.core.StandardService.initialize(StandardService.java:680)
+	at org.apache.catalina.core.StandardServer.initialize(StandardServer.java:795)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:524)
+	at org.apache.catalina.startup.Catalina.load(Catalina.java:548)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:260)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:412)
+2011-11-15 14:45:52 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 607 ms
+2011-11-15 14:45:52 org.apache.catalina.core.StandardService start
+信息: Starting service Catalina
+2011-11-15 14:45:52 org.apache.catalina.core.StandardEngine start
+信息: Starting Servlet Engine: Apache Tomcat/6.0.29
+2011-11-15 14:45:52 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory ROOT
+2011-11-15 14:48:07 org.apache.catalina.core.AprLifecycleListener init
+信息: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Java\jdk1.6.0_13\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;C:\Java\jdk1.6.0_13\bin;C:\Program Files\Common Files\Roxio Shared\9.0\DLLShared\;C:\Program Files\IDM Computer Solutions\UltraEdit\;C:\Program Files\SSH Communications Security\SSH Secure Shell
+2011-11-15 14:48:07 org.apache.coyote.http11.Http11Protocol init
+信息: Initializing Coyote HTTP/1.1 on http-80
+2011-11-15 14:48:07 org.apache.catalina.startup.Catalina load
+信息: Initialization processed in 369 ms
+2011-11-15 14:48:07 org.apache.catalina.core.StandardService start
+信息: Starting service Catalina
+2011-11-15 14:48:07 org.apache.catalina.core.StandardEngine start
+信息: Starting Servlet Engine: Apache Tomcat/6.0.29
+2011-11-15 14:48:07 org.apache.catalina.startup.HostConfig deployDirectory
+信息: Deploying web application directory ROOT

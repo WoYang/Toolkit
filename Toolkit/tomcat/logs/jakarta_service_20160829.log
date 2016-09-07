@@ -1,0 +1,54 @@
+[2016-08-29 09:33:48] [info] Procrun (2.0.4.0) started
+[2016-08-29 09:33:48] [info] Service Tomcat6CAS name Apache Tomcat Tomcat6CAS
+[2016-08-29 09:33:48] [420  service.c] [error] 指定的服务已存在。
+[2016-08-29 09:33:48] [614  prunsrv.c] [error] Failed installing Tomcat6CAS service
+[2016-08-29 09:33:48] [info] Procrun finished.
+[2016-08-29 09:34:21] [info] Procrun (2.0.4.0) started
+[2016-08-29 09:34:21] [info] Service Tomcat6CAS name Apache Tomcat Tomcat6CAS
+[2016-08-29 09:34:21] [420  service.c] [error] 指定的服务已存在。
+[2016-08-29 09:34:21] [614  prunsrv.c] [error] Failed installing Tomcat6CAS service
+[2016-08-29 09:34:21] [info] Procrun finished.
+[2016-08-29 09:34:23] [info] Procrun (2.0.4.0) started
+[2016-08-29 09:34:23] [info] Service Tomcat6CAS name Apache Tomcat Tomcat6CAS
+[2016-08-29 09:34:23] [420  service.c] [error] 指定的服务已存在。
+[2016-08-29 09:34:23] [614  prunsrv.c] [error] Failed installing Tomcat6CAS service
+[2016-08-29 09:34:23] [info] Procrun finished.
+[2016-08-29 13:18:24] [info] Procrun (2.0.4.0) started
+[2016-08-29 13:18:24] [info] Service Tomcat6CAS name Apache Tomcat Tomcat6CAS
+[2016-08-29 13:18:24] [420  service.c] [error] 指定的服务已存在。
+[2016-08-29 13:18:24] [614  prunsrv.c] [error] Failed installing Tomcat6CAS service
+[2016-08-29 13:18:24] [info] Procrun finished.
+[2016-08-29 13:18:24] [info] Procrun (2.0.4.0) started
+[2016-08-29 13:18:24] [info] Running Service...
+[2016-08-29 13:18:24] [info] Starting service...
+[2016-08-29 13:18:25] [info] Service started in 1109 ms.
+[2016-08-29 13:23:04] [info] Stopping service...
+[2016-08-29 13:23:06] [info] Service stopped.
+[2016-08-29 13:23:06] [info] Run service finished.
+[2016-08-29 13:23:06] [info] Procrun finished.
+[2016-08-29 13:23:08] [info] Procrun (2.0.4.0) started
+[2016-08-29 13:23:08] [info] Service Tomcat6CAS name Apache Tomcat Tomcat6CAS
+[2016-08-29 13:23:08] [420  service.c] [error] 指定的服务已存在。
+[2016-08-29 13:23:08] [614  prunsrv.c] [error] Failed installing Tomcat6CAS service
+[2016-08-29 13:23:08] [info] Procrun finished.
+[2016-08-29 13:23:08] [info] Procrun (2.0.4.0) started
+[2016-08-29 13:23:08] [info] Running Service...
+[2016-08-29 13:23:08] [info] Starting service...
+[2016-08-29 13:23:10] [info] Service started in 1100 ms.
+[2016-08-29 13:23:13] [info] Stopping service...
+[2016-08-29 13:23:14] [info] Service stopped.
+[2016-08-29 13:23:14] [info] Run service finished.
+[2016-08-29 13:23:14] [info] Procrun finished.
+[2016-08-29 13:23:16] [info] Procrun (2.0.4.0) started
+[2016-08-29 13:23:16] [info] Service Tomcat6CAS name Apache Tomcat Tomcat6CAS
+[2016-08-29 13:23:16] [420  service.c] [error] 指定的服务已存在。
+[2016-08-29 13:23:16] [614  prunsrv.c] [error] Failed installing Tomcat6CAS service
+[2016-08-29 13:23:16] [info] Procrun finished.
+[2016-08-29 13:23:16] [info] Procrun (2.0.4.0) started
+[2016-08-29 13:23:16] [info] Running Service...
+[2016-08-29 13:23:16] [info] Starting service...
+[2016-08-29 13:23:17] [info] Service started in 1091 ms.
+[2016-08-30 13:53:04] [info] Stopping service...
+[2016-08-30 13:53:06] [info] Service stopped.
+[2016-08-30 13:53:06] [info] Run service finished.
+[2016-08-30 13:53:06] [info] Procrun finished.

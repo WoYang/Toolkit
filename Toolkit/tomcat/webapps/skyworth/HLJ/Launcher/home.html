@@ -1,0 +1,384 @@
+<!--Author YW & Version 1.0.0 -->
+<html>
+<head>
+<link href="aform.css" rel="stylesheet" type="text/css">
+<script src="aform.js" type="text/javascript"></script>
+
+<script src="jquery-1.8.2.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="editor/themes/default/default.css" />
+<script src="editor/kindeditor.js" charset="utf-8"></script>
+
+<script charset="utf-8" src="editor/lang/zh_CN.js"></script>
+<script type="text/javascript"> 
+	
+	/**
+	*	data struct
+	*/
+	var launcherdata ={ 
+		version:'',
+		logo:'',
+		defaultBackground:'',
+		<!-- do not support now -->
+		pageSwitchMode:'',
+		navs: [{
+				id:'',
+				name:'',
+				focusImg:'',
+				img:'',
+				description:'',
+				pageList:[{
+					id:'',
+					name:'',
+					column:'',
+					row:'',
+					elementWidth:'',
+					elementHeight:'',
+					horizontal_space:'',
+					vertical_space:'',
+					background:'',
+					elements:[{
+						id:'',
+						type:'',
+						left:'',
+						top:'',
+						width:'',
+						height:'',
+						groupID:'',
+						controlType:'',
+						canFocus:'',
+						defaultFocus:'',
+						autoPlay:'',
+						forceDefaultData:'',
+						elementDatas:[{
+							name:'',
+							description:'',
+							contentURL:'',
+							textContent:'',
+							elementAction:{
+								actionType:'',
+								actionURL:'',
+								actionType:'',
+								extraData:{
+									param:{
+										name:''
+									}
+								}
+							},
+							extraData:{
+								param:{
+									name:''
+								}
+							}
+						}]
+					}]
+				}]
+			}], 
+		<!-- do not support now -->
+		shortcuts : [], 
+		<!-- do not support now -->
+		groups: [],
+		<!-- do not support now -->
+		additionElements:[]
+	} 
+	
+	var af = null;
+	function init(){
+		
+		$.getJSON("Launcher.json",function(data){
+					launcherdata = data;
+					//自定义图片上传组件
+					AForm.registerControl("imgSelect",{
+						render: function (k, v, config , i ,af){
+							v = v.split(",");
+							var html = "";
+							var itemType = config.itemType || "text";
+							html += "<input style='" + config.ctrlCssText + "' class='form-control' id='"+i+"' name=\"" + k + "_begin\" type='text' itemType='" + itemType + "' value='" + v[0] + "' />";
+							html += "<input style='" + config.ctrlCssText + "' class='form-control' onclick='upload("+i+")' name=\"" + k + "_end\" type='button' itemType='" + itemType + "' value='" + ("上传") + "' />";
+							return html;
+						},
+						"getJsonPartString": function (ele,conf)
+						{
+							var ips = ele.getElementsByTagName("input");
+							var k = ips[0].name.replace("_begin", "");
+							return "\"" + k + "\":\"" + ips[0].value + "\"";
+						}
+					});
+	
+					af = new AForm("target",{
+					arrayIndex : {show : true},
+					restrict:true,
+					requireAtBegin: true,
+					schemaMode:"local",
+					fields:{
+						"version":{tips: "表明本launcher.json文件的版本号,以时间为单位精确到秒",ctrlId:'version_input',required:true,extHtml:"<input type='button' value='生成当前时间' onclick='setDate(version_input)'/>" }
+						,
+						"logo":{tips:"Logo图片",type:"imgSelect"}
+						,
+						"defaultBackground":{tips:"页面背景图",type:"imgSelect"}
+						,
+						"pageSwitchMode":{tips:"switch_through_nav:通过菜单切换\nswitch_through_smoothing:通过滑动切换",type:"text",noRender:true,disabled:true}
+						,
+						"navs":{tips:"导航列表,按数组顺序从左到右排列\n每个导航可以包含一个或多个Page",jtype:"Array",fields:{
+								"id":{tips: "页面唯一编号",type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+								"name":{tips:"导航名称 ",type:"text",defaultValue:"name"},
+								"focusImg":{tips:"focusImg",type:"text",noRender:true,readonly:true},
+								"img":{tips:"img",type:"text",noRender:true,readonly:true},
+								"description":{tips:"description",type:"text",noRender:true,readonly:true},
+								"pageList":{tips:"菜单下的页列表,按数组顺序从左向右排列",jtype:"Array",fields:{
+										"id":{tips:"页面唯一标识,不允许两个页面出现相同id,建议从1000递增",required:true,type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+										"name":{tips:"page名称,不允许两个页面出现相同name",type:"text",defaultValue:"name"},
+										"column":{tips:"例如页面布局单元格分为5*3的网格布局，则填写5",required:true,type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+										"row":{tips:"例如页面布局单元格分为5*3的网格布局，则填写3",required:true,type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+										"elementWidth":{tips:"单元格宽度,单位像素,如48",required:true,type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+										"elementHeight":{tips:"单元格高度,单位像素,如48",required:true,type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+										"horizontal_space":{tips:"资源位横向间距",type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+										"vertical_space":{tips:"资源位纵向间距",type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+										"background":{tips:"可选，如果不定义，则使用defaultBackgroud标签定义的公用背景图",type:"text",noRender:true,disabled:true},
+										"description":{tips:"描述",type:"text",noRender:true,disabled:true},
+										elements:{tips:"单元格是以1x1的单元格的大小倍数.大小可以自由组合",jtype:"Array",collapse:true,fields:{
+												"id":{tips:"单元格元素唯一编号,必填，全局唯一,建议从10000递增",required:true,type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+												"type":{tips:"0: 视频(直接播放频道或者片花)\n1: 图片(指资源位展示图片)\n2: Widget(指资源位上加载小程序)\n3: WebView(指资源位需要打开页面，呈现第三方页面的入口)\n4: 文本(资源位展示文字)\n目前系统只支持0/1",required:true,type:"select", datalist: ['0', '1','2','3','4'],defaultValue:1},
+												"left":{tips:"以格子数为单位,起始坐标从0开始.",required:true,type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+												"top":{tips:"以格子数为单位,起始坐标从0开始",required:true,type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+												"width":{tips:"以格子数为单位,比如占用2个单元格宽度,则填2",required:true,type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+												"height":{tips:"以格子数为单位,比如占用2个单元格高度度,则填2",required:true,type:"text",pattern:"\\d+",patternErrorMsg:"请输入数字",defaultValue:0},
+												"controlType":{tips:"0:平台控制\n1:用户控制",type:"select", datalist: ['0', '1'],noRender:true,disabled:true},
+												"canFocus":{tips:"值为true或false,默认为true.",required:true,type:"select", datalist: ['true', 'false']},
+												"defaultFocus":{tips:"值为true或false,默认为false.表示单元格是否具有页面的默认焦点.一个页面只有一个元素具有缺省焦点.",type:"text",noRender:true,disabled:true},
+												"autoPlay":{tips:"当type为video时,包含此属性,表示是否自动切换视频播放,true自动切换;false手动切换.",type:"text",noRender:true,disabled:true},
+												"groupID":{tips:"资源位不归属于分组,该字段为空.资源位归属于组,则优先从组接口机或栏目获取资源位数据展示；",type:"text",noRender:true,disabled:true},
+												elementDatas:{tips:"单个资源位内容相关数据的单项定义",jtype:"Array",collapse:true,fields:{
+														"name":{tips:"元素名称,作为元素名称定义,此名称不会在界面中显示,业务匹配使用全局唯一",required:true,type:"text",defaultValue:"name"},
+														"contentURL":{tips:"element.type=0时,作为播放地址;\nelement.type=1时,作为图片地址;\nelement.type=2时,为WidgetID;\nelement.type=3时,为第三方网页地址;",required:true,type:"imgSelect",defaultValue:"http://"},
+														"textContent":{tips:"element.type=4有效,为文本内容",type:"text",noRender:true,disabled:true},
+														"description":{tips:"描述",type:"text",noRender:true,disabled:true},
+														elementAction:{tips:"点击元素后触发的动作",collapse:true,fields:{
+															"actionType":{tips:"0:播放视频;\n1:跳转到第三方网址;\n2:打开网页;\n3:打开应用APP\n目前系统只支持0和3",type:"select", datalist:['0','1','2','3'],defaultValue:0},
+															"actionURL":{tips:"actionType为0时,为播放视频的URL;\nactionType为1时为,跳转第三方网站URL;\nactionType为2时为,跳转本地页面;\nactionType为3时,为APK的包名遵循本JSON的URL格式规范",type:"text"},
+															"appParam":{tips:"actionType为3时此参数有效.NAME1=VALUE1&NAME2=VALUE2&NAME3=VALUE3",type:"text"},
+															 extraData:{tips:"扩展字段,保存元素所对应的其他数据,可根据业务需要后续进行扩展",collapse:true,fields:{
+																 param:{tips:"扩展参数键值",fields:{
+																	"name":{tips:"扩展参数键名",type:"text"}
+																	}
+																}
+															  }
+															}
+														  }
+														},
+														 extraData:{tips:"扩展字段,保存元素所对应的其他数据,可根据业务需要后续进行扩展",collapse:true,fields:{
+																 param:{tips:"扩展参数键值",fields:{
+																	"name":{tips:"扩展参数键名",type:"text"}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						
+						,
+						"shortcuts":{tips:"每个Shortcut元素对应界面中的一个快捷入口",jtype:"Array",collapse:true,fields:{
+								"id":{tips: "快捷入口唯一编号",type:"text"},
+								"name":{tips:"快捷入口名称 ",type:"text"},
+								"type":{tips:"快捷入口控件类型,必填.\n类型定义包括:\"IMAGE\":通用类型,图片类型,通过指定图片方式进行展示(通过Img和FocusImg标签指定);",type:"text"},
+								"canFocus":{tips:"是否允许落焦点,值为true或false,默认为true",type:"text"},
+								"img":{tips:"快捷入口正常显示图片URL",type:"text"},
+								"focusImg":{tips:"快捷入口高亮显示图片URL",type:"text"},
+								"description":{tips:"组描述",type:"text",readonly:true},
+								elementAction:{tips:"点击元素后触发的动作",collapse:true,fields:{
+									"actionType":{tips:"0:播放视频;\n1:跳转到第三方网址;\n2:打开网页;\n3:打开应用APP\n目前系统只支持0和3",type:"text"},
+									"actionURL":{tips:"actionType为0时,为播放视频的URL;\nactionType为1时为,跳转第三方网站URL;\nactionType为2时为,跳转本地页面;\nactionType为3时,为APK的包名遵循本JSON的URL格式规范",type:"text"},
+									"appParam":{tips:"actionType为3时此参数有效.NAME1=VALUE1&NAME2=VALUE2&NAME3=VALUE3",type:"text"},
+												 extraData:{tips:"扩展字段,保存元素所对应的其他数据,可根据业务需要后续进行扩展",collapse:true,fields:{
+												 param:{tips:"扩展参数键值",fields:{
+														"name":{tips:"扩展参数键名",type:"text"}
+													}
+												}
+											}
+										}
+									}
+								}
+							}												
+						}
+						
+						,
+						"groups":{tips:"桌面的资源组列表",jtype:"Array",collapse:true,fields:{
+								"id":{tips: "分组唯一编号",type:"text"},
+								"name":{tips:"组的名称 ",type:"text"},
+								"type":{tips:"数据类型:\n0:Group内无数据\n1:VOD栏目列表；\n2:频道栏目列表；\n3:栏目下VOD列表\n4:栏目下频道列表\n5:VOD排行榜\n6:用户协同推荐VOD列表\n7:用户偏好推荐VOD列表\n8:用户偏好推荐TVOD列表\n9:正在播放中的热点频道节目列表\n10:未来即将播放直播节目单推荐\n99:其他平台接口",type:"text"},
+								"apiURL":{tips:"Group内数据的接口机地址",type:"text"},
+								"categoryCode":{tips:"栏目编号当type为1,2,3,4,5时有效",type:"text"},
+								"description":{tips:"组描述",type:"text",readonly:true}
+							}												
+						}
+					}
+					});	
+					af.on("afterExeCmd", function(cmd,dom){
+						console.log('afterExeCmd',cmd);
+						refreshOption();
+					});
+					af.render(launcherdata);
+					refreshOption();
+		})
+	}	
+		
+	$(function(){ 
+		$('#save').click(function(){ 
+			//saveJson();
+			var json = af.getJsonString();
+			doSave(json,"text/latex","Launcher.json");
+		}); 
+		$('#mpreview_button').click(function(){ 
+			var iframeDoc=document.getElementById("mpreview");
+			console.log('mpreview_button ',iframeDoc);
+			iframeDoc.src = "gridster/gridpreview.html";
+		});		
+	}); 
+	
+	function refreshOption(){
+		var pageSelect=document.getElementById("page_select");
+		pageSelect.options.length = 0;
+		for(var i=0;i < af.getJson().navs[0].pageList.length; i++){
+			var op=document.createElement("option");
+			op.setAttribute("value",i);
+			var index = i+1;
+			op.appendChild(document.createTextNode("第"+index+"页"));
+			pageSelect.appendChild(op);
+		}
+	}
+	
+	function doSave(value, type, name) {
+		var blob;
+		if (typeof window.Blob == "function") {
+			blob = new Blob([value], {type: type});
+		} else {
+			var BlobBuilder = window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder || window.MSBlobBuilder;
+			var bb = new BlobBuilder();
+			bb.append(value);
+			blob = bb.getBlob(type);
+		}
+		var URL = window.URL || window.webkitURL;
+		var bloburl = URL.createObjectURL(blob);
+		var anchor = document.createElement("a");
+		if ('download' in anchor) {
+			anchor.style.visibility = "hidden";
+			anchor.href = bloburl;
+			anchor.download = name;
+			document.body.appendChild(anchor);
+			var evt = document.createEvent("MouseEvents");
+			evt.initEvent("click", true, true);
+			anchor.dispatchEvent(evt);
+			document.body.removeChild(anchor);
+		} else if (navigator.msSaveBlob) {
+			navigator.msSaveBlob(blob, name);
+		} else {
+			location.href = bloburl;
+		}
+	}
+	
+	function setDate(control)  
+	{   
+		var now = new Date();
+		var year = now.getFullYear();       
+        var month = now.getMonth() + 1;
+        var day = now.getDate();
+       
+        var hh = now.getHours();
+        var mm = now.getMinutes();
+		var ss = now.getSeconds();
+		
+		var clock = year;
+        if(month < 10){
+            clock += "0";
+		}
+        clock += month;
+       
+        if(day < 10){
+            clock += "0";
+         }  
+        clock += day;
+       
+        if(hh < 10){
+            clock += "0";
+        }   
+        clock += hh;
+        if (mm < 10){
+			clock += '0'; 
+		} 
+        clock += mm; 
+		if(ss < 10){
+			clock += '0';
+		}
+		clock += ss; 
+		var date_text = document.getElementById(control.id);
+		date_text.value = clock;
+		
+        return(clock); 
+	}  
+	
+	function upload(control){
+		console.log('upload',control);
+		window.K = KindEditor;
+		var editor = K.editor({
+			allowFileManager : false,
+			loadStyleMode : false
+		});
+		editor.loadPlugin('image', function() {
+			editor.plugin.imageDialog({
+				showRemote : false,
+				imageUrl : K('#'+control).val(),
+				clickFn : function(url, title, width, height, border, align) {
+					if(url.startsWith("http://") || url.startsWith("https://") || url.indexOf("assets") == -1){
+						K('#'+control).val(url);
+					}else {
+						K('#'+control).val("/"+url.substring(url.indexOf("assets")));
+					}
+					editor.hideDialog();
+				}
+			});
+		});
+	}
+	
+	var page_select_index = 0;
+	function select_changed(pos){
+		page_select_index = pos.value;
+	}
+</script> 
+
+</head>
+<body onload="init();">
+<div style="overflow:auto;width:100%;background:url(img/head_bg.jpg)">
+<p style="text-align:center;">
+	<strong>Launcher配置系统</strong>
+</p>
+<p style="text-align:center;">
+	<span style="font-family:SimHei;">V1.0.0</span>
+</p>
+</div>
+<hr/>
+<p>
+</p>
+<p>
+</p>
+<form id="target"></form>
+<p>
+</p>
+<p>
+</p>
+<input type="button" id="save" value="保存到本地"/> 
+<hr/>
+<br />
+<select id="page_select" name="page"  onchange="select_changed(this)"></select>
+<input type="button" id="mpreview_button" value="预览"/>  
+<hr/>								
+<br/>
+<iframe width=100% height=100% id="mpreview" frameborder="0" ></iframe>
+<br/>
+</body>
+</html>

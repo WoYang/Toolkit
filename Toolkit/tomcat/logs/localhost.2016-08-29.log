@@ -1,0 +1,450 @@
+八月 29, 2016 1:09:13 下午 org.apache.catalina.core.StandardWrapperValve invoke
+严重: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 117 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+114: %>
+115: <%!
+116: private String getError(String message) {
+117: 	JSONObject obj = new JSONObject();
+118: 	obj.put("error", 1);
+119: 	obj.put("message", message);
+120: 	return obj.toJSONString();
+
+
+An error occurred at line: 117 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+114: %>
+115: <%!
+116: private String getError(String message) {
+117: 	JSONObject obj = new JSONObject();
+118: 	obj.put("error", 1);
+119: 	obj.put("message", message);
+120: 	return obj.toJSONString();
+
+
+An error occurred at line: 36 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+ServletFileUpload cannot be resolved
+33: 
+34: response.setContentType("text/html; charset=UTF-8");
+35: 
+36: if(!ServletFileUpload.isMultipartContent(request)){
+37: 	out.println(getError("璇烽?鎷╂枃浠躲?"));
+38: 	return;
+39: }
+
+
+An error occurred at line: 76 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+FileItemFactory cannot be resolved to a type
+73: 	dirFile.mkdirs();
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+
+
+An error occurred at line: 76 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+DiskFileItemFactory cannot be resolved to a type
+73: 	dirFile.mkdirs();
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+
+
+An error occurred at line: 77 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+ServletFileUpload cannot be resolved to a type
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+
+
+An error occurred at line: 77 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+ServletFileUpload cannot be resolved to a type
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+
+
+An error occurred at line: 82 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+FileItem cannot be resolved to a type
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+81: while (itr.hasNext()) {
+82: 	FileItem item = (FileItem) itr.next();
+83: 	String fileName = item.getName();
+84: 	long fileSize = item.getSize();
+85: 	if (!item.isFormField()) {
+
+
+An error occurred at line: 82 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+FileItem cannot be resolved to a type
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+81: while (itr.hasNext()) {
+82: 	FileItem item = (FileItem) itr.next();
+83: 	String fileName = item.getName();
+84: 	long fileSize = item.getSize();
+85: 	if (!item.isFormField()) {
+
+
+An error occurred at line: 108 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+105: 			return;
+106: 		}
+107: 
+108: 		JSONObject obj = new JSONObject();
+109: 		obj.put("error", 0);
+110: 		obj.put("url", saveUrl + newFileName);
+111: 		out.println(obj.toJSONString());
+
+
+An error occurred at line: 108 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+105: 			return;
+106: 		}
+107: 
+108: 		JSONObject obj = new JSONObject();
+109: 		obj.put("error", 0);
+110: 		obj.put("url", saveUrl + newFileName);
+111: 		out.println(obj.toJSONString());
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:317)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:857)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Unknown Source)
+
+八月 29, 2016 1:11:36 下午 org.apache.catalina.core.StandardWrapperValve invoke
+严重: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 117 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+114: %>
+115: <%!
+116: private String getError(String message) {
+117: 	JSONObject obj = new JSONObject();
+118: 	obj.put("error", 1);
+119: 	obj.put("message", message);
+120: 	return obj.toJSONString();
+
+
+An error occurred at line: 117 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+114: %>
+115: <%!
+116: private String getError(String message) {
+117: 	JSONObject obj = new JSONObject();
+118: 	obj.put("error", 1);
+119: 	obj.put("message", message);
+120: 	return obj.toJSONString();
+
+
+An error occurred at line: 36 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+ServletFileUpload cannot be resolved
+33: 
+34: response.setContentType("text/html; charset=UTF-8");
+35: 
+36: if(!ServletFileUpload.isMultipartContent(request)){
+37: 	out.println(getError("璇烽?鎷╂枃浠躲?"));
+38: 	return;
+39: }
+
+
+An error occurred at line: 76 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+FileItemFactory cannot be resolved to a type
+73: 	dirFile.mkdirs();
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+
+
+An error occurred at line: 76 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+DiskFileItemFactory cannot be resolved to a type
+73: 	dirFile.mkdirs();
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+
+
+An error occurred at line: 77 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+ServletFileUpload cannot be resolved to a type
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+
+
+An error occurred at line: 77 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+ServletFileUpload cannot be resolved to a type
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+
+
+An error occurred at line: 82 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+FileItem cannot be resolved to a type
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+81: while (itr.hasNext()) {
+82: 	FileItem item = (FileItem) itr.next();
+83: 	String fileName = item.getName();
+84: 	long fileSize = item.getSize();
+85: 	if (!item.isFormField()) {
+
+
+An error occurred at line: 82 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+FileItem cannot be resolved to a type
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+81: while (itr.hasNext()) {
+82: 	FileItem item = (FileItem) itr.next();
+83: 	String fileName = item.getName();
+84: 	long fileSize = item.getSize();
+85: 	if (!item.isFormField()) {
+
+
+An error occurred at line: 108 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+105: 			return;
+106: 		}
+107: 
+108: 		JSONObject obj = new JSONObject();
+109: 		obj.put("error", 0);
+110: 		obj.put("url", saveUrl + newFileName);
+111: 		out.println(obj.toJSONString());
+
+
+An error occurred at line: 108 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+105: 			return;
+106: 		}
+107: 
+108: 		JSONObject obj = new JSONObject();
+109: 		obj.put("error", 0);
+110: 		obj.put("url", saveUrl + newFileName);
+111: 		out.println(obj.toJSONString());
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:317)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:857)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Unknown Source)
+
+八月 29, 2016 1:15:12 下午 org.apache.catalina.core.StandardWrapperValve invoke
+严重: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 117 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+114: %>
+115: <%!
+116: private String getError(String message) {
+117: 	JSONObject obj = new JSONObject();
+118: 	obj.put("error", 1);
+119: 	obj.put("message", message);
+120: 	return obj.toJSONString();
+
+
+An error occurred at line: 117 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+114: %>
+115: <%!
+116: private String getError(String message) {
+117: 	JSONObject obj = new JSONObject();
+118: 	obj.put("error", 1);
+119: 	obj.put("message", message);
+120: 	return obj.toJSONString();
+
+
+An error occurred at line: 36 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+ServletFileUpload cannot be resolved
+33: 
+34: response.setContentType("text/html; charset=UTF-8");
+35: 
+36: if(!ServletFileUpload.isMultipartContent(request)){
+37: 	out.println(getError("璇烽?鎷╂枃浠躲?"));
+38: 	return;
+39: }
+
+
+An error occurred at line: 76 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+FileItemFactory cannot be resolved to a type
+73: 	dirFile.mkdirs();
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+
+
+An error occurred at line: 76 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+DiskFileItemFactory cannot be resolved to a type
+73: 	dirFile.mkdirs();
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+
+
+An error occurred at line: 77 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+ServletFileUpload cannot be resolved to a type
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+
+
+An error occurred at line: 77 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+ServletFileUpload cannot be resolved to a type
+74: }
+75: 
+76: FileItemFactory factory = new DiskFileItemFactory();
+77: ServletFileUpload upload = new ServletFileUpload(factory);
+78: upload.setHeaderEncoding("UTF-8");
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+
+
+An error occurred at line: 82 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+FileItem cannot be resolved to a type
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+81: while (itr.hasNext()) {
+82: 	FileItem item = (FileItem) itr.next();
+83: 	String fileName = item.getName();
+84: 	long fileSize = item.getSize();
+85: 	if (!item.isFormField()) {
+
+
+An error occurred at line: 82 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+FileItem cannot be resolved to a type
+79: List items = upload.parseRequest(request);
+80: Iterator itr = items.iterator();
+81: while (itr.hasNext()) {
+82: 	FileItem item = (FileItem) itr.next();
+83: 	String fileName = item.getName();
+84: 	long fileSize = item.getSize();
+85: 	if (!item.isFormField()) {
+
+
+An error occurred at line: 108 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+105: 			return;
+106: 		}
+107: 
+108: 		JSONObject obj = new JSONObject();
+109: 		obj.put("error", 0);
+110: 		obj.put("url", saveUrl + newFileName);
+111: 		out.println(obj.toJSONString());
+
+
+An error occurred at line: 108 in the jsp file: /HLJ/Launcher/editor/jsp/upload_json.jsp
+JSONObject cannot be resolved to a type
+105: 			return;
+106: 		}
+107: 
+108: 		JSONObject obj = new JSONObject();
+109: 		obj.put("error", 0);
+110: 		obj.put("url", saveUrl + newFileName);
+111: 		out.println(obj.toJSONString());
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:317)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:857)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Unknown Source)
+

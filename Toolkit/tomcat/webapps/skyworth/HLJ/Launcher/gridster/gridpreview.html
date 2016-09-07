@@ -1,0 +1,114 @@
+<!--Author YW & Version 1.0.0 -->
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+	
+    <link rel="stylesheet" href="dist/angular-gridster.min.css" />
+    <link rel="stylesheet" href="demo/common/style.css" />
+	<link rel="stylesheet" href="demo/main/style.css" />
+	
+	<script src="src/angular.js"></script>
+    <script src="src/angular-gridster.js"></script>
+
+    <script type="text/javascript">
+		
+		var background = ".."+parent.af.getJson().defaultBackground;
+		var page = parent.af.getJson().navs[0].pageList[parent.page_select_index];
+		var name = page.name;
+		var row = page.row;
+		var column = page.column;
+		var elementWidth = page.elementWidth;
+		var elementHeight = page.elementHeight;
+		var horizontal_space = page.horizontal_space;
+		var vertical_space = page.vertical_space;
+				
+		var module = angular.module('app', ['gridster']);
+		module.directive('integer', function() {
+			return {
+				require: 'ngModel',
+				link: function(scope, ele, attr, ctrl) {
+					ctrl.$parsers.unshift(function(viewValue) {
+						if (viewValue === '' || viewValue === null || typeof viewValue === 'undefined') {
+							return null;
+						}
+						return parseInt(viewValue, 10);
+					});
+				}
+			};
+		});
+
+		module.controller('MainCtrl', function($scope) {
+			$scope.gridsterOpts = {
+				margins: [horizontal_space, vertical_space],
+				colWidth: elementWidth,
+				rowHeight: elementHeight,
+				columns:column,
+				maxRows: row,
+				outerMargin: false,
+				pushing: true,
+				floating: true,
+				draggable: {
+					enabled: true
+				},
+				resizable: {
+					enabled: true,
+					handles: ['n', 'e', 's', 'w', 'se', 'sw']
+				}
+			};
+			var items = new Array();
+			$scope.standardItems = new Array();
+			for(var i=0;i < page.elements.length; i++){
+				var tmp ={
+					sizeX:'',
+					sizeY:'',
+					row:'',
+					col:''
+				}
+				tmp.col = page.elements[i].left;
+				tmp.row = page.elements[i].top;
+				tmp.sizeX = page.elements[i].width;
+				tmp.sizeY = page.elements[i].height;
+				items[i] = tmp;
+			}
+			$scope.standardItems = items;
+			console.log('items',items);					
+		});
+		module.controller('pageCtrl', function($scope){
+			$scope.page_name = name;
+		});
+    </script>
+</head>
+
+<body ng-app="app">
+	<div>
+	
+		<div ng-controller="pageCtrl">
+			<input type="text" ng-model="page_name" disabled="disabled"/>
+		</div>
+		
+		</br>
+		</br>
+		
+        <div class="container" ng-view>
+			<div  ng-controller="MainCtrl" class="demo-container">
+				<div gridster="gridsterOpts">
+					<ul>
+						<li gridster-item="item" ng-repeat="item in standardItems">
+							<input type="text" integer ng-model="item.row" size="1" />,
+							<input type="text" integer ng-model="item.col" size="1" />
+							<br />
+							<input type="text" integer ng-model="item.sizeX" size="1" />x
+							<input type="text" integer ng-model="item.sizeY" size="1" />
+						</li>
+					</ul>
+				</div>	
+			</div>
+		</div>
+		
+    </div>
+</body>
+
+</html>
